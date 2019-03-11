@@ -3,7 +3,7 @@ import java.lang.*;
 
 // --------------------- Sketch-wide variables ----------------------
 Table table;
-String[] allSpeciesName = new String[128];
+String[] allSpeciesName = new String[13];
 int speciesNum;
 ArrayList<Species> allSpecies = new ArrayList<Species>();
 float bigCircleDia = 600;
@@ -52,42 +52,18 @@ void draw()
      float ijRelation = allSpecies.get(i).getRelations().get(j);
      // draw links if two speceis have relations
      if(ijRelation!=0) {
-       if(ijRelation==1||ijRelation==1.2||ijRelation==1.25) {
-         stroke(220,20,60);
+       if(ijRelation==1) {
+         stroke(204,235,197);
          line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
        }
-       if(ijRelation==2||ijRelation==2.5) {
-         stroke(139,0,139);
+       if(ijRelation==2) {
+         stroke(179,205,227);
          line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
        }
        if(ijRelation==3) {
-         stroke(72,61,139);
+         stroke(251,180,174);
          line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
        }
-       if(ijRelation==4||ijRelation==4.1||ijRelation==4.1||ijRelation==4.2) {
-         stroke(128,0,0);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       }  
-       if(ijRelation==5){
-         stroke(0,128,0);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       } 
-       if(ijRelation==6) {
-         stroke(255,215,0);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       } 
-       if(ijRelation==7) {
-         stroke(0,255,127);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       } 
-       if(ijRelation==8) {
-         stroke(47,79,79);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       } 
-       if(ijRelation==9) {
-         stroke(100,149,237);
-         line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor());
-       } 
      }
    }
  }
