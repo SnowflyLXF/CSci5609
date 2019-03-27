@@ -9,7 +9,7 @@ public class Species {
   private float xCor;
   private float yCor;
   private int index;
-  private final int speciesNum = 12;
+  private final int speciesNum = 13;
   private final float interval = (float)360/13;
 
   public Species(TableRow speciesRow, float bigCircleDia, int index){
@@ -28,11 +28,11 @@ public class Species {
     // ELLIPSE x, y, width, height
     shape = createShape(ELLIPSE, xCor,yCor ,diameter ,diameter);
     // If type is Basal, set the color to royal blue.
-    if (type.equals("plant")) shape.setFill(color(161,218,180));
+    if (type.equals("Plant")) shape.setFill(color(102,194,165));
     // If type is Freeliving, set the color to Spring Green1.
-    else if (type.equals("herbivore")) shape.setFill(color(65,182,196));
+    else if (type.equals("Herbivore")) shape.setFill(color(252,141,98));
     // If type is Basal, set the color to Orange Red.
-    else if (type.equals("predator")) shape.setFill(color(34,94,168));
+    else if (type.equals("Predator")) shape.setFill(color(141,160,203));
     shape.setStroke(false);
   }
   
