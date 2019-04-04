@@ -12,6 +12,7 @@ PShape bigCircle;
 PImage img;
 String description;
 boolean predPray = true, paraHost = true, predHost = true, paraPara = true;
+int buttonX = 50, buttonY = 120;
 // ------------------------ Initialisation --------------------------
 
 // Initialises the data and bar chart.
@@ -22,10 +23,10 @@ boolean predPray = true, paraHost = true, predHost = true, paraPara = true;
 
 
 void setup(){
-  size(1350, 720);
+  size(1650, 900);
   smooth(); 
   // ELLIPSE x, y, width, height
-  bigCircle = createShape(ELLIPSE,640,360,bigCircleDia,bigCircleDia);  
+  bigCircle = createShape(ELLIPSE,725,475,bigCircleDia,bigCircleDia);  
   // Load the data table.
   table = loadTable("carpinteria.csv");
   // The first row of the table saves all the name of species in the food web.
@@ -44,19 +45,19 @@ void setup(){
 }
 
 void mousePressed(){
-  if (mouseX <= 125 && mouseX >= 100 && mouseY <= 125 && mouseY >= 100) {
+  if (mouseX <= buttonX+10 && mouseX >= buttonX && mouseY <= buttonY+10 && mouseY >= buttonY) {
     if (predPray == false) predPray = true;
     else predPray = false;
   }
-  if (mouseX <= 125 && mouseX >= 100 && mouseY <= 165 && mouseY >= 140) {
+  if (mouseX <= buttonX+10 && mouseX >= buttonX && mouseY <= buttonY+30 && mouseY >= buttonY+20) {
     if (paraHost == false) paraHost = true;
     else paraHost = false;
   }
-  if (mouseX <= 125 && mouseX >= 100 && mouseY <= 205 && mouseY >= 180) {
+  if (mouseX <= buttonX+10 && mouseX >= buttonX && mouseY <= buttonY+50 && mouseY >= buttonY+40) {
     if (predHost == false) predHost = true;
     else predHost = false;
   }
-  if (mouseX <= 125 && mouseX >= 100 && mouseY <= 245 && mouseY >= 220) {
+  if (mouseX <= buttonX+10 && mouseX >= buttonX && mouseY <= buttonY+70 && mouseY >= buttonY+60) {
     if (paraPara == false) paraPara = true;
     else paraPara = false;
   }
@@ -68,94 +69,106 @@ void draw()
  background(255); 
  shape(bigCircle,0,0);
  stroke(0);
- textSize(20);
+ textSize(15);
  fill(0);
- text("Subwebs (click to select)", 100, 80);
+ text("Subwebs (click to select)", 45, 110);
  
  if (predPray) fill(152,78,163);
  else noFill();
- rect(100, 100, 25, 25);
+ rect(buttonX, buttonY, 10, 10);
  fill(152,78,163);
- text("pedator-prey", 140, 120); 
+ text("pedator-prey", buttonX+13, buttonY+10); 
  
  if (paraHost) fill(247,129,191);
  else noFill();
- rect(100, 140, 25, 25);
+ rect(buttonX, buttonY+20, 10, 10);
  fill(247,129,191);
- text("parasite-host", 140, 160);
+ text("parasite-host", buttonX+13, buttonY+30);
  
  if (predHost) fill(78,179,211);
  else noFill();
- rect(100, 180, 25, 25);
+ rect(buttonX, buttonY+40, 10, 10);
  fill(78,179,211);
- text("predator-parasite", 140, 200);
+ text("predator-parasite", buttonX+13, buttonY+50);
  
  if (paraPara) fill(153,153,153);
  else noFill();
- rect(100, 220, 25, 25);
+ rect(buttonX, buttonY+60, 10, 10);
  fill(153,153,153);
- text("parasite-parasite", 140, 240);
+ text("parasite-parasite", buttonX+13, buttonY+70);
  
- fill(255,255,51); rect(990, 90, 10, 10);
- fill(255,127,0); rect(990, 110, 10, 10);
- fill(228,26,28); rect(990, 130, 10, 10);
- fill(152,78,163); rect(990, 150, 10, 10);
- fill(247,129,191); rect(990, 180, 10, 10);
- fill(102,166,30); rect(990, 212, 10, 10);
- fill(78,179,211); rect(990, 242, 10, 10);
- fill(153,153,153); rect(990, 272, 10, 10);
+ int tplX = 40, tplY = 350;
+ fill(255,255,51); rect(tplX, tplY, 10, 10);
+ fill(255,127,0); rect(tplX, tplY+20, 10, 10);
+ fill(228,26,28); rect(tplX, tplY+40, 10, 10);
+ fill(152,78,163); rect(tplX, tplY+60, 10, 10);
+ fill(247,129,191); rect(tplX, tplY+85, 10, 10);
+ fill(102,166,30); rect(tplX, tplY+105, 10, 10);
+ fill(78,179,211); rect(tplX, tplY+150, 10, 10);
+ fill(153,153,153); rect(tplX, tplY+170, 10, 10);
  
- textSize(16);
+ textSize(13);
  fill(0);
- text("Types of links", 990, 75);
+ text("Types of links", tplX, 340);
  textSize(12);
- text("first intermediate host", 1010, 100);
- text("first and second intermediate host", 1010, 120);
- text("second intermediate host", 1010, 140);
- text("final intermediate host", 1010, 160);
- text("predator-prey and egg predator", 1010, 190);
- text("predation on free-living cercarial stage of", 1010, 220);
- text("a trematode and micropredation (mosquito)", 1010, 230);
- text("predation on parasite in a host", 1010, 250); 
- text("parasite-parasite (mostly intraguild predation)", 1010, 280);
+ text("first intermediate host", tplX+20, tplY+10);
+ text("first and second intermediate host", tplX+20, tplY+30);
+ text("second intermediate host", tplX+20, tplY+50);
+ text("final intermediate host", tplX+20, tplY+70);
+ text("predator-prey and egg predator", tplX+20, tplY+90);
+ text("predation on free-living cercarial", tplX+20, tplY+110);
+ text("stage of a trematode and", tplX+20, tplY+125);
+ text("micropredation (mosquito)", tplX+20, tplY+140);
+ text("predation on parasite in a host", tplX+20, tplY+160); 
+ text("parasite-parasite", tplX+20, tplY+180);
  
- fill(102,194,165); circle(995, 375, 15);
- fill(1252,141,98); circle(995, 405, 15);
- fill(141,160,203); circle(995, 435, 15);
+ int tpsX = 55, tpsY = 250;
+ fill(102,194,165); circle(tpsX, tpsY, 15);
+ fill(1252,141,98); circle(tpsX, tpsY+20, 15);
+ fill(141,160,203); circle(tpsX, tpsY+40, 15);
  
  fill(0);
- textSize(18);
- text("Types of species", 990, 350);
- textSize(16);
- text("Basal", 1015, 380);
- text("Freeliving", 1015, 410);
- text("Parasite", 1015, 440);
+ textSize(14);
+ text("Types of species", tpsX-10, tpsY-15);
+ textSize(14);
+ text("Basal", tpsX+10, tpsY+5);
+ text("Freeliving", tpsX+10, tpsY+25);
+ text("Parasite", tpsX+10, tpsY+45);
  
- textSize(12);
- text("Citation: ", 970, 500);
- text("CLafferty, K. D., R. F. Hechinger, J. C. Shaw, K. L. Whitney ", 970, 520);
- text("and A. M. Kuris (in press) ", 970, 535);
- text("Food webs and parasites in a salt marsh ecosystem. ", 970, 555);
- text("In Disease ecology: community structure and pathogen", 970, 575);
- text("dynamics (eds S. Collinge and C. Ray). ", 970, 590);
- text("Oxford University Press, Oxford.", 970, 605);
+ //textSize(12);
+ //text("Citation: ", 970, 500);
+ //text("CLafferty, K. D., R. F. Hechinger, J. C. Shaw, K. L. Whitney ", 970, 520);
+ //text("and A. M. Kuris (in press) ", 970, 535);
+ //text("Food webs and parasites in a salt marsh ecosystem. ", 970, 555);
+ //text("In Disease ecology: community structure and pathogen", 970, 575);
+ //text("dynamics (eds S. Collinge and C. Ray). ", 970, 590);
+ //text("Oxford University Press, Oxford.", 970, 605);
  
- noFill();
- rect(960, 480, 350, 140);
- rect(80, 300, 220, 350);
+ //noFill();
+ //rect(960, 480, 350, 140);
+ //rect(80, 300, 220, 350);
  
- textSize(18);
- text("Killdeer", 90, 325);
- img = loadImage("image/41.jpg");
- image(img, 95, 330, 180, 120);
- textSize(15);
- description = "Charadrius vociferus (Killdeer) is a species of bird in the family Charadriidae. It is found in the Neotropics and the Nearctic. It is a carnivore.";
- text(description, 90, 465, 200, 650);
+ //textSize(18);
+ //text("Killdeer", 90, 325);
+ //img = loadImage("image/41.jpg");
+ //image(img, 95, 330, 180, 120);
+ //textSize(15);
+ //description = "Charadrius vociferus (Killdeer) is a species of bird in the family Charadriidae. It is found in the Neotropics and the Nearctic. It is a carnivore.";
+ //text(description, 90, 465, 200, 650);
  
  for(int i = 0; i < speciesNum; i++){
    shape(allSpecies.get(i).getShape(),0,0);
  }
- for(int i = 0; i < speciesNum; i ++){
+ for(int i = 0; i < speciesNum; i++){
+     int t=i;
+     pushMatrix();
+     fill(0);
+     textSize(10);
+     rotate(t*PI/64);
+     translate(allSpecies.get(t).getXNum()*cos(t*PI/64)+allSpecies.get(t).getYNum()*sin(t*PI/64), -allSpecies.get(t).getXNum()*sin(t*PI/64)+allSpecies.get(t).getYNum()*cos(t*PI/64)+3);
+     text(allSpecies.get(t).getName(), 0,0);
+     popMatrix();
+ 
    for(int j = 0; j < speciesNum; j++){
      float ijRelation = allSpecies.get(i).getRelations().get(j);
      // draw links if two speceis have relations
