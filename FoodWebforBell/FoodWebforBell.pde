@@ -48,19 +48,21 @@ void draw()
  noStroke();
  textSize(16);
  fill(0);
- text("Characters in the Food web:", 100, 100);
+ text("Characters in the Food web:", 180, 150);
  
- fill(102,194,165); circle(110, 120, 15);
- text("Plants", 130, 125);
+ fill(102,194,165); circle(200, 180, 15);
+ text("Plants", 215, 185);
  
- fill(252,141,98); circle(110,140,15);
- text("Herbivores", 130, 145);
+ fill(252,141,98); circle(200, 210, 15);
+ text("Herbivores", 215, 215);
  
- fill(141,160,203); circle(110,160,15);
- text("Predators", 130, 165);
+ fill(141,160,203); circle(200,240,15);
+ text("Predators", 215, 245);
  
  for(int i = 0; i < speciesNum; i++){
    shape(allSpecies.get(i).getShape(),0,0);
+   fill(0);
+   text(allSpecies.get(i).getName(), allSpecies.get(i).getXCor()-20, allSpecies.get(i).getYCor()-25);
  }
  for(int i = 0; i < speciesNum; i ++){
    for(int j = 0; j < speciesNum; j++){

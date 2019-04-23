@@ -8,6 +8,8 @@ public class Species {
   private float diameter;
   private float xCor;
   private float yCor;
+  private float xNum;
+  private float yNum;
   private int index;
   private final int speciesNum = 13;
   private final float interval = (float)360/13;
@@ -21,6 +23,8 @@ public class Species {
     diameter = (float)(bigCircleDia * Math.PI / speciesNum)/2;
     xCor = (float)(640+Math.cos(Math.toRadians(index*interval))*bigCircleDia/2);
     yCor = (float)(360+Math.sin(Math.toRadians(index*interval))*bigCircleDia/2);
+    xNum = (float)(640+Math.cos(Math.toRadians(index*interval))*(bigCircleDia/2+10));
+    yNum = (float)(360+Math.sin(Math.toRadians(index*interval))*(bigCircleDia/2+10));
     drawShape();
   }
   
@@ -57,6 +61,12 @@ public class Species {
   }
   public float getYCor(){
     return yCor;
+  }
+  public float getXNum(){
+    return xNum;
+  }
+  public float getYNum(){
+    return yNum;
   }
 }
   

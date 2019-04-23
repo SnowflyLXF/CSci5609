@@ -18,16 +18,16 @@ public class Species {
   no = idx;
   for(int i = 0; i < speciesRow.getColumnCount(); i++){
       if(i==0) level = speciesRow.getInt(i);
-      if(i==1) index = speciesRow.getFloat(i);
+      else if(i==1) index = speciesRow.getFloat(i);
       else if(i==2) name = speciesRow.getString(i);
       else relations.add(speciesRow.getFloat(i));
     }
     //diameter = (float)(bigCircleDia * Math.PI / speciesNum);
     //xCor = (float)(Math.cos(Math.toRadians(index))*(1000-100*level));
     //yCor = (float)(Math.sin(Math.toRadians(index))*(1000-100*level));
-    xCor = (float)(Math.cos(Math.toRadians(index))*500);
-    yCor = (float)(Math.sin(Math.toRadians(index))*500);
-    zCor = (float)(level*100);
+    xCor = (float)(Math.cos(Math.toRadians(index))*350);
+    yCor = (float)(Math.sin(Math.toRadians(index))*350);
+    zCor = (float)(level*150-400);
     //drawShape();
   }
   

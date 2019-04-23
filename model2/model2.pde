@@ -8,6 +8,7 @@ int speciesNum;
 ArrayList<Species> allSpecies = new ArrayList<Species>();
 float bigCircleDia = 600;
 float interval;
+int s;
 //PShape bigCircle;
 // ------------------------ Initialisation --------------------------
 
@@ -19,7 +20,7 @@ float interval;
 
 
 void setup(){
-  size(1650, 900, P3D);
+  size(700, 900, P3D);
   smooth(); 
   // ELLIPSE x, y, width, height
   //bigCircle = createShape(ELLIPSE,725,475,bigCircleDia,bigCircleDia);  
@@ -44,7 +45,7 @@ void setup(){
 
 void draw()
 {
- background(0); 
+ background(255); 
  stroke(255); 
  noStroke();
  directionalLight(255, 255, 255,  1, -0.5, -0.5);
@@ -66,26 +67,29 @@ void draw()
     else if (allSpecies.get(i).getLevel()==3) fill(128,177,211);
     else if (allSpecies.get(i).getLevel()==4) fill(251,128,114);
     else if (allSpecies.get(i).getLevel()==5) fill(190,186,218);
-    else if (allSpecies.get(i).getLevel()==6) fill(255,255,179);
-    else fill(141,211,199);
+    else if (allSpecies.get(i).getLevel()==6) fill(141,211,199);
+    else fill(255,255,179);
    pushMatrix();
    lights();
    translate(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(i).getZCor());
-   sphere(15);
+   sphere(20);
    popMatrix();
  }
  stroke(255);
  for(int i = 0; i < speciesNum; i++){
-   fill(255);
-   text(allSpecies.get(i).getName(), allSpecies.get(i).getXCor()+15, allSpecies.get(i).getYCor(), allSpecies.get(i).getZCor());
+   //fill(255);
+   //textSize(18);
+   //text(allSpecies.get(i).getName(), allSpecies.get(i).getXCor()+15, allSpecies.get(i).getYCor(), allSpecies.get(i).getZCor());
    if (allSpecies.get(i).getLevel()==1) stroke(179,222,105);
    else if (allSpecies.get(i).getLevel()==2) stroke(253,180,98);
    else if (allSpecies.get(i).getLevel()==3) stroke(128,177,211);
    else if (allSpecies.get(i).getLevel()==4) stroke(251,128,114);    
    else if (allSpecies.get(i).getLevel()==5) stroke(190,186,218);
-   else if (allSpecies.get(i).getLevel()==6) stroke(255,255,179);
-   else fill(141,211,199);
-   //if (allSpecies.get(i).getLevel()==2){
+   else if (allSpecies.get(i).getLevel()==6) stroke(141,211,199);
+   else stroke(255,255,179);
+   s = second();
+   int t = ((int)(s/2)) % 8;
+   if (t == 7){
      for(int j = 0; j < speciesNum; j++){
        float ijRelation = allSpecies.get(i).getRelations().get(j);
        // draw links if two speceis have relations
@@ -95,5 +99,29 @@ void draw()
        }
      }
    }
- 
+   else{
+     if (allSpecies.get(i).getLevel()==t+1){
+       if (t==0) fill(179,222,105, 10);
+       else if (t==1) fill(253,180,98, 10);
+       else if (t==2) fill(128,177,211, 10);
+       else if (t==3) fill(251,128,114, 10);
+       else if (t==4) fill(190,186,218, 10);
+       else if (t==5) fill(141,211,199, 10);
+       else fill(255,255,179, 10);
+       
+       pushMatrix();
+       translate(0, 0, (t+1)*150-400);
+       circle(0, 0, 700);
+       popMatrix();
+       for(int j = 0; j < speciesNum; j++){
+         float ijRelation = allSpecies.get(i).getRelations().get(j);
+         // draw links if two speceis have relations
+         if(ijRelation!=0) {
+             strokeWeight(0.75);
+             line(allSpecies.get(i).getXCor(), allSpecies.get(i).getYCor(), allSpecies.get(i).getZCor(), allSpecies.get(j).getXCor(), allSpecies.get(j).getYCor(), allSpecies.get(j).getZCor());
+         }
+       }
+     }
+   }
+ }
 }
